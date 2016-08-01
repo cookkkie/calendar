@@ -70,30 +70,28 @@ const CalendarHeader = React.createClass({
     const value = this.props.value;
     const monthBeforeYear = locale.monthBeforeYear;
     const selectClassName = `${prefixCls}-${monthBeforeYear ? 'my-select' : 'ym-select'}`;
-    const year = (<a
+    const year = (<span
       className={`${prefixCls}-year-select`}
       role="button"
-      onClick={showTimePicker ? null : this.showYearPanel}
       title={locale.monthSelect}
     >
       {this.yearFormatter.format(value)}
-    </a>);
-    const month = (<a
+    </span>);
+    const month = (<span
       className={`${prefixCls}-month-select`}
       role="button"
-      onClick={showTimePicker ? null : this.showMonthPanel}
       title={locale.monthSelect}
     >
       {this.monthFormatter.format(value)}
-    </a>);
+    </span>);
     let day;
     if (showTimePicker) {
-      day = (<a
+      day = (<span
         className={`${prefixCls}-day-select`}
         role="button"
       >
         {this.dayFormatter.format(value)}
-      </a>);
+      </span>);
     }
     let my = [];
     if (monthBeforeYear) {
@@ -146,14 +144,6 @@ const CalendarHeader = React.createClass({
     return (<div className={`${prefixCls}-header`}>
       <div style={{ position: 'relative' }}>
         {this.showIf(enablePrev && !showTimePicker, <a
-          className={`${prefixCls}-prev-year-btn`}
-          role="button"
-          onClick={this.previousYear}
-          title={locale.previousYear}
-        >
-          «
-        </a>)}
-        {this.showIf(enablePrev && !showTimePicker, <a
           className={`${prefixCls}-prev-month-btn`}
           role="button"
           onClick={this.previousMonth}
@@ -168,13 +158,6 @@ const CalendarHeader = React.createClass({
           title={locale.nextMonth}
         >
           ›
-        </a>)}
-        {this.showIf(enableNext && !showTimePicker, <a
-          className={`${prefixCls}-next-year-btn`}
-          onClick={this.nextYear}
-          title={locale.nextYear}
-        >
-          »
         </a>)}
       </div>
       {panel}
